@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BiPlusMedical } from "react-icons/bi";
 import { FaMinus } from "react-icons/fa";
@@ -6,6 +6,23 @@ import { FaMinus } from "react-icons/fa";
 const UseState = () => {
 
   const[ count , setCount ] = useState(0);
+
+// This will always run on every re-render 
+
+  // useEffect( () =>{
+  //    document.title = count ;
+  // });
+  
+// This will run one time when the component mount , or on first render
+
+  // useEffect( () =>{
+  //    document.title = count
+  // } , []);
+
+// When value of a change then only re-render
+  useEffect( () =>{
+     document.title = count
+  } , [count]);
 
   return (
     <>
